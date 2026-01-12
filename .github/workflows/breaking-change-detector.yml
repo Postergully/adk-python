@@ -14,27 +14,24 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Required for griffe.load_git to access 'main' history
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
-      - name: Install the latest version of uv
-        uses: astral-sh/setup-uv@v5
-
       - name: Install dependencies
-        # 1. uv sync installs the SDK (google-auth, pydantic, etc.)
-        # 2. uv pip install griffe ensures the detector tool is in the venv
+        uses: astral-sh/setup-uv@v5
+        with:
+          version: "latest"
+
+      - name: Install project
         run: |
           uv sync --extra test
           uv pip install griffe
 
       - name: Run Breaking Change Detection
-        # Using 'uv run python' is the key: it automatically runs the script
-        # inside the .venv created in the previous step, so both 'griffe'
-        # and 'google' are found.
         run: |
           uv run python - <<EOF
           import sys
@@ -42,15 +39,18 @@ jobs:
           from griffe import find_breaking_changes, load, load_git
 
           try:
-              print("Loading current API (from PR)...")
-              # We use 'google.adk' and tell Griffe to look in 'src'
-              new_api = load("google.adk", search_paths=["src"])
+              # 1. Force static analysis (allow_inspection=False) to avoid sys.modules caching issues
+              print("Loading new API...")
+              new_api = load("google.adk", search_paths=["src"], allow_inspection=False)
               
-              print("Loading baseline API (from main branch)...")
-              # search_paths=["src"] is also required here to find the package in the worktree
-              old_api = load_git("google.adk", ref="main", search_paths=["src"])
+              print("Loading old API...")
+              old_api = load_git("google.adk", ref="main", search_paths=["src"], allow_inspection=False)
 
-              print("Comparing for breaking changes...")
+              # Debug: Verify we are comparing different files
+              print(f"DEBUG: New API path: {new_api.filepath}")
+              print(f"DEBUG: Old API path: {old_api.filepath}")
+
+              print("Comparing...")
               breakages = list(find_breaking_changes(old_api, new_api))
               
               if breakages:
@@ -60,6 +60,7 @@ jobs:
                   sys.exit(1)
                   
               print("Success: No breaking changes detected.")
+
           except Exception as e:
               print(f"::error::Breaking change detection failed: {e}")
               sys.exit(1)
