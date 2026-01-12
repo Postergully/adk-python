@@ -38,18 +38,30 @@ jobs:
           import griffe
           from griffe import find_breaking_changes, load, load_git
 
+          def print_debug_info(api_obj, label):
+              try:
+                  # Navigate to Runner.run to check what Griffe sees
+                  runner = api_obj.members["Runner"]
+                  run_method = runner.members["run"]
+                  print(f"DEBUG [{label}]: Runner.run return annotation: '{run_method.returns}'")
+              except KeyError as e:
+                  print(f"DEBUG [{label}]: Could not find 'Runner.run' member. Missing: {e}")
+                  print(f"DEBUG [{label}]: Available members: {list(api_obj.members.keys())}")
+
           try:
-              # 1. Force static analysis (allow_inspection=False) to avoid sys.modules caching issues
-              print("Loading new API...")
+              # 1. Load NEW API (Force static analysis)
+              print("Loading new API from src/...")
               new_api = load("google.adk", search_paths=["src"], allow_inspection=False)
+              print(f"DEBUG: New API filepath: {new_api.filepath}")
+              print_debug_info(new_api, "NEW")
               
-              print("Loading old API...")
+              # 2. Load OLD API (Force static analysis from git)
+              print("Loading old API from main branch...")
               old_api = load_git("google.adk", ref="main", search_paths=["src"], allow_inspection=False)
+              print(f"DEBUG: Old API filepath: {old_api.filepath}")
+              print_debug_info(old_api, "OLD")
 
-              # Debug: Verify we are comparing different files
-              print(f"DEBUG: New API path: {new_api.filepath}")
-              print(f"DEBUG: Old API path: {old_api.filepath}")
-
+              # 3. Compare
               print("Comparing...")
               breakages = list(find_breaking_changes(old_api, new_api))
               
@@ -58,7 +70,9 @@ jobs:
                   for breakage in breakages:
                       print(breakage.explain())
                   sys.exit(1)
-                  
+              
+              # If we see different return types in DEBUG logs but 0 breakages here, 
+              # it means Griffe considers them compatible.
               print("Success: No breaking changes detected.")
 
           except Exception as e:
