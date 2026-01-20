@@ -43,7 +43,7 @@ What actually happened? Include error messages or crash stack traces here.
 **Regression**
 Did this work in a previous version of ADK? If so, which one?
 
-**Logs (Logcat)**
+**Logs**
 Please attach relevant logs. Wrap them in code blocks (```) or attach a text file.
 ```text
 // Paste logs here
