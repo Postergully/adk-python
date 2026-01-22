@@ -15,10 +15,10 @@ A clear and concise description of what the bug is.
 
 **Steps to Reproduce**
 Please provide a numbered list of steps to reproduce the behavior:
-1. Initialize ADK with...
-2. Connect accessory...
-3. Call function `x`...
-4. See error...
+1. Install '...'
+2. Run '....'
+3. Open '....'
+4. Provide error or stacktrace
 
 **Expected Behavior**
 A clear and concise description of what you expected to happen.
