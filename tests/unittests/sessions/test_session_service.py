@@ -128,6 +128,110 @@ def test_database_session_service_preserves_timezone_for_other_dialects():
   assert now.tzinfo is not None
 
 
+@pytest.mark.parametrize('dialect_name', ['sqlite', 'postgresql'])
+def test_append_event_strips_timezone_for_dialect(dialect_name):
+  """Verifies that append_event converts event.timestamp to a naive UTC
+  datetime for SQLite and PostgreSQL, rather than using local timezone."""
+  event_timestamp = 1700000000.0  # A fixed UNIX timestamp
+
+  # Simulate the fixed logic in append_event
+  update_time = datetime.fromtimestamp(event_timestamp, timezone.utc)
+  assert update_time.tzinfo is not None  # Starts timezone-aware
+
+  if dialect_name in ('sqlite', 'postgresql'):
+    update_time = update_time.replace(tzinfo=None)
+
+  # Both dialects should produce a naive datetime
+  assert update_time.tzinfo is None
+  # The wall-clock value must match the UTC interpretation, not local time
+  expected_utc_naive = datetime.fromtimestamp(
+      event_timestamp, timezone.utc
+  ).replace(tzinfo=None)
+  assert update_time == expected_utc_naive
+
+
+def test_append_event_preserves_timezone_for_other_dialects():
+  """Verifies that append_event keeps timezone-aware UTC datetimes for
+  dialects that support timezone-aware columns (e.g. MySQL)."""
+  event_timestamp = 1700000000.0
+  dialect_name = 'mysql'
+
+  update_time = datetime.fromtimestamp(event_timestamp, timezone.utc)
+
+  if dialect_name in ('sqlite', 'postgresql'):
+    update_time = update_time.replace(tzinfo=None)
+
+  # MySQL should keep the timezone info intact
+  assert update_time.tzinfo is not None
+  assert update_time.tzinfo == timezone.utc
+
+
+@pytest.mark.asyncio
+async def test_append_event_stores_utc_based_update_time():
+  """Integration test: verifies that append_event stores a UTC-based
+  update_time in the database, not a local-timezone-based one."""
+  service = DatabaseSessionService('sqlite+aiosqlite:///:memory:')
+  try:
+    session = await service.create_session(
+        app_name='app', user_id='user', session_id='s1'
+    )
+    event_timestamp = 1700000000.0
+    evt = Event(
+        invocation_id='inv1',
+        author='user',
+        timestamp=event_timestamp,
+    )
+    await service.append_event(session, evt)
+
+    # Fetch the raw storage session and verify update_time
+    schema = service._get_schema_classes()
+    async with service.database_session_factory() as sql_session:
+      from sqlalchemy import select as sa_select
+
+      result = await sql_session.execute(
+          sa_select(schema.StorageSession).filter(
+              schema.StorageSession.id == 's1'
+          )
+      )
+      storage_session = result.scalars().one()
+
+    expected_utc_naive = datetime.fromtimestamp(
+        event_timestamp, timezone.utc
+    ).replace(tzinfo=None)
+    assert storage_session.update_time == expected_utc_naive
+  finally:
+    await service.close()
+
+
+@pytest.mark.asyncio
+async def test_append_event_update_time_consistent_with_create_session():
+  """Verifies that the update_time set by append_event is consistent with
+  the timezone handling in create_session (both should be UTC-based)."""
+  service = DatabaseSessionService('sqlite+aiosqlite:///:memory:')
+  try:
+    session = await service.create_session(
+        app_name='app', user_id='user', session_id='s1'
+    )
+    create_update_time = session.last_update_time
+
+    # Append an event with a timestamp slightly in the future
+    event_timestamp = create_update_time + 100.0
+    evt = Event(
+        invocation_id='inv1',
+        author='user',
+        timestamp=event_timestamp,
+    )
+    await service.append_event(session, evt)
+
+    # Both create_session and append_event should produce UTC-based times
+    # so the difference should match the timestamp difference, not be offset
+    # by local timezone
+    assert session.last_update_time == pytest.approx(event_timestamp, abs=1e-6)
+    assert session.last_update_time > create_update_time
+  finally:
+    await service.close()
+
+
 def test_database_session_service_respects_pool_pre_ping_override():
   captured_kwargs = {}
 

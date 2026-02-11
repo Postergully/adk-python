@@ -627,12 +627,9 @@ class DatabaseSessionService(BaseSessionService):
           if session_state_delta:
             storage_session.state = storage_session.state | session_state_delta
 
-        if is_sqlite:
-          update_time = datetime.fromtimestamp(
-              event.timestamp, timezone.utc
-          ).replace(tzinfo=None)
-        else:
-          update_time = datetime.fromtimestamp(event.timestamp)
+        update_time = datetime.fromtimestamp(event.timestamp, timezone.utc)
+        if self.db_engine.dialect.name in (_SQLITE_DIALECT, _POSTGRESQL_DIALECT):
+          update_time = update_time.replace(tzinfo=None)
         storage_session.update_time = update_time
         sql_session.add(schema.StorageEvent.from_event(session, event))
 
