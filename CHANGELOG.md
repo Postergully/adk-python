@@ -43,13 +43,7 @@
 ### Improvements
 
 * Replace check of instance for LlmAgent with hasAttribute check ([7110336](https://github.com/google/adk-python/commit/7110336788662abb8c9bbbb0a53a50cc09130d5e))
-* Remove bare excepts ([0758f87](https://github.com/google/adk-python/commit/0758f877b1ee900cbe83e974fd62dca5133489bf))
-* Remove the release-please GitHub App config files and add an Actions-based release pipeline with candidate branch strategy ([38b4869](https://github.com/google/adk-python/commit/38b4869c414c3e84616db81aafac49f41dd12fa9))
-* Match the environment with internal ones for pyink/isort/unittest ([61c329f](https://github.com/google/adk-python/commit/61c329f8ce7659574410744ab3868ca002946ed8))
-* Upgrade GitHub Actions for Node 24 compatibility ([2f0fe97](https://github.com/google/adk-python/commit/2f0fe97729893d57dd31f0bfeb52214edf682efe))
-* Upgrade GitHub Actions to latest versions ([f5702d7](https://github.com/google/adk-python/commit/f5702d70bf25bbe2bce9906645e0460952951623))
 * Log exception details before re-raising in MCP session execution ([de79bf1](https://github.com/google/adk-python/commit/de79bf12b564a4eefc7e6a2568dbe0f08bb6efeb))
-* Add experimental tag to SkillToolset ([ec660ed](https://github.com/google/adk-python/commit/ec660ed4f0214fd2a88569d13d819a8035adb748))
 
 ## [1.24.1](https://github.com/google/adk-python/compare/v1.24.0...v1.24.1) (2026-02-06)
 
