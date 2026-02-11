@@ -300,20 +300,20 @@ class MockAsyncClient:
     if user_id_match:
       user_id = user_id_match.group(1)
       if user_id == 'user_with_pages':
-        return [
+        return to_async_iterator([
             _convert_to_object(MOCK_SESSION_JSON_PAGE1),
             _convert_to_object(MOCK_SESSION_JSON_PAGE2),
-        ]
-      return [
+        ])
+      return to_async_iterator([
           _convert_to_object(session)
           for session in self.session_dict.values()
           if session['user_id'] == user_id
-      ]
+      ])
 
     # No user filter, return all sessions
-    return [
+    return to_async_iterator([
         _convert_to_object(session) for session in self.session_dict.values()
-    ]
+    ])
 
   async def _delete_session(self, name: str):
     session_id = name.split('/')[-1]
@@ -454,6 +454,57 @@ def _generate_events_for_page(session_id: str, start_idx: int, count: int):
   return events
 
 
+class MockAsyncClientWithListPagination:
+  """Mock client that simulates pagination for list_sessions.
+
+  Tracks whether the client context is active and raises RuntimeError
+  if iteration occurs outside the context, simulating real AsyncPager behavior.
+  """
+
+  def __init__(self, sessions_pages: list[list[dict]]):
+    self._sessions_pages = sessions_pages
+    self._context_active = False
+    self.agent_engines = mock.AsyncMock()
+    self.agent_engines.sessions.list.side_effect = self._list_sessions
+
+  async def __aenter__(self):
+    self._context_active = True
+    return self
+
+  async def __aexit__(self, exc_type, exc_val, exc_tb):
+    self._context_active = False
+
+  async def _list_sessions(self, name: str, config: dict[str, Any]):
+    return self._paginated_sessions_iterator()
+
+  async def _paginated_sessions_iterator(self):
+    for page in self._sessions_pages:
+      for session in page:
+        if not self._context_active:
+          raise RuntimeError(
+              'Cannot send a request, as the client has been closed.'
+          )
+        yield _convert_to_object(session)
+
+
+def _generate_sessions_for_page(start_idx: int, count: int):
+  """Generates a list of mock session dicts for one page."""
+  sessions = []
+  start_time = isoparse('2024-12-12T12:12:12.123456Z')
+  for i in range(count):
+    idx = start_idx + i
+    session_time = start_time + datetime.timedelta(seconds=idx)
+    sessions.append({
+        'name': (
+            'projects/test-project/locations/test-location/'
+            f'reasoningEngines/123/sessions/session_{idx}'
+        ),
+        'update_time': session_time.isoformat().replace('+00:00', 'Z'),
+        'user_id': 'pagination_user',
+    })
+  return sessions
+
+
 @pytest.mark.asyncio
 async def test_get_session_pagination_keeps_client_open():
   """Regression test: event iteration must occur inside the api_client context.
@@ -493,6 +544,35 @@ async def test_get_session_pagination_keeps_client_open():
   assert len(session.events) == 250
   assert session.events[0].invocation_id == 'invocation_0'
   assert session.events[249].invocation_id == 'invocation_249'
+
+
+@pytest.mark.asyncio
+async def test_list_sessions_pagination_keeps_client_open():
+  """Regression test: session iteration must occur inside the api_client context.
+
+  This test verifies that list_sessions() keeps the API client open while
+  iterating through paginated sessions. The sessions_iterator from the API
+  is an AsyncPager that requires async iteration to fetch subsequent pages.
+  """
+  page1_sessions = _generate_sessions_for_page(0, 100)
+  page2_sessions = _generate_sessions_for_page(100, 50)
+
+  mock_client = MockAsyncClientWithListPagination(
+      sessions_pages=[page1_sessions, page2_sessions],
+  )
+
+  session_service = mock_vertex_ai_session_service()
+
+  with mock.patch.object(
+      session_service, '_get_api_client', return_value=mock_client
+  ):
+    result = await session_service.list_sessions(
+        app_name='123', user_id='pagination_user'
+    )
+
+  assert len(result.sessions) == 150
+  assert result.sessions[0].id == 'session_0'
+  assert result.sessions[149].id == 'session_149'
 
 
 def mock_vertex_ai_session_service(
@@ -707,7 +787,7 @@ async def test_list_sessions():
 
 @pytest.mark.asyncio
 @pytest.mark.usefixtures('mock_get_api_client')
-async def test_list_sessions_with_pagination():
+async def test_list_sessions_filtered_by_user():
   session_service = mock_vertex_ai_session_service()
   sessions = await session_service.list_sessions(
       app_name='123', user_id='user_with_pages'
