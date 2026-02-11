@@ -5,7 +5,7 @@
 ### Features
 
 * **[Core]**
-  * Add a demo simple prompt optimizer for the optimization interface ([0abf4cd](https://github.com/google/adk-python/commit/0abf4cd2c7103a071506c9398455a3bd66fe5da5))
+  * Add a demo for the simple prompt optimizer for the optimization interface ([0abf4cd](https://github.com/google/adk-python/commit/0abf4cd2c7103a071506c9398455a3bd66fe5da5))
   * Add `--auto_create_session` flag to `adk api_server` CLI ([40c15d0](https://github.com/google/adk-python/commit/40c15d059599472b40f48272a464eb3cb7345fc6))
   * Add `add_events_to_memory` facade for event-delta ([59e8897](https://github.com/google/adk-python/commit/59e88972ae4f10274444593db0607f40cfcc597e))
   * Add post-invocation token-threshold compaction with event retention ([a88e864](https://github.com/google/adk-python/commit/a88e8647558a9b9d0bfdf38d2d8de058e3ba0596))
