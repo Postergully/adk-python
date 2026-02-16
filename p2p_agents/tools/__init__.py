@@ -46,6 +46,11 @@ from p2p_agents.tools.notification_tools import (
     send_email_notification,
     send_slack_notification,
 )
+from p2p_agents.tools.document_tools import (
+    create_doc_report,
+    create_ppt_report,
+    create_spreadsheet,
+)
 
 __all__ = [
     # Payment tools (8)
@@ -88,4 +93,8 @@ __all__ = [
     # Notification tools (2)
     "send_slack_notification",
     "send_email_notification",
+    # Document generation tools (3)
+    "create_ppt_report",
+    "create_spreadsheet",
+    "create_doc_report",
 ]
