@@ -17,7 +17,7 @@ class P2PSettings(BaseSettings):
 
   mode: Literal["MOCK", "LIVE"] = "MOCK"
 
-  netsuite_base_url: str = "http://localhost:8081"
+  netsuite_base_url: str = "http://localhost:8083"
   netsuite_account_id: str = "TSTDRV123456"
   netsuite_consumer_key: str = "mock-consumer-key"
   netsuite_consumer_secret: str = "mock-consumer-secret"

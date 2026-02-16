@@ -1,6 +1,9 @@
 """P2P ShareChat Agent System — 1 coordinator + 5 specialist agents."""
 
 from google.adk.agents import LlmAgent
+from google.adk.models.lite_llm import LiteLlm
+
+CLAUDE_MODEL = LiteLlm(model="anthropic/claude-sonnet-4-5-20250929")
 
 from p2p_agents.tools.payment_tools import (
     get_payment_status,
@@ -53,7 +56,7 @@ from p2p_agents.tools.notification_tools import (
 
 payment_agent = LlmAgent(
     name="payment_agent",
-    model="gemini-2.0-flash",
+    model=CLAUDE_MODEL,
     description=(
         "Handles all payment workflows — status lookups, reimbursement processing, "
         "delay notifications, approval reminders, and priority vendor communications."
@@ -115,7 +118,7 @@ When a user submits or asks about reimbursements:
 
 invoice_agent = LlmAgent(
     name="invoice_agent",
-    model="gemini-2.0-flash",
+    model=CLAUDE_MODEL,
     description=(
         "Processes invoices — OCR extraction, data entry into NetSuite, "
         "document format conversion, and bank upload file generation."
@@ -167,7 +170,7 @@ When user needs to convert a document:
 
 vendor_agent = LlmAgent(
     name="vendor_agent",
-    model="gemini-2.0-flash",
+    model=CLAUDE_MODEL,
     description=(
         "Manages entire vendor lifecycle — creation, onboarding, KYC verification, "
         "document tracking, and status reporting."
@@ -225,7 +228,7 @@ When user asks for onboarding status across all vendors:
 
 reporting_agent = LlmAgent(
     name="reporting_agent",
-    model="gemini-2.0-flash",
+    model=CLAUDE_MODEL,
     description=(
         "Generates P2P efficiency metrics, tracks accruals, and produces reports "
         "across all P2P operations."
@@ -286,7 +289,7 @@ When user asks to compare periods:
 
 bank_ops_agent = LlmAgent(
     name="bank_ops_agent",
-    model="gemini-2.0-flash",
+    model=CLAUDE_MODEL,
     description=(
         "Automates bank entry creation from statements and performs "
         "credit card invoice reconciliation."
@@ -340,7 +343,7 @@ When user needs to create multiple bank entries at once:
 
 root_agent = LlmAgent(
     name="p2p_coordinator",
-    model="gemini-2.0-flash",
+    model=CLAUDE_MODEL,
     description="P2P operations coordinator for ShareChat's finance team.",
     instruction="""\
 You are the P2P operations assistant for ShareChat's finance team.

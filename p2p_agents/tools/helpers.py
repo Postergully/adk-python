@@ -79,6 +79,26 @@ def sd_post(path: str, json: dict | None = None) -> dict:
         return r.json()
 
 
+_SD_PARTY_CACHE: dict[str, str] = {}  # vendor_name -> party_id
+
+
+def resolve_spotdraft_party_id(vendor_name: str) -> str | None:
+    """Map a NetSuite vendor name to a SpotDraft party_id by name match."""
+    if vendor_name in _SD_PARTY_CACHE:
+        return _SD_PARTY_CACHE[vendor_name]
+
+    # Build cache on first call
+    if not _SD_PARTY_CACHE:
+        try:
+            parties = sd_get("/parties/")
+            for p in (parties if isinstance(parties, list) else []):
+                _SD_PARTY_CACHE[p.get("name", "")] = p.get("id", "")
+        except Exception:
+            return None
+
+    return _SD_PARTY_CACHE.get(vendor_name)
+
+
 def send_slack_message(message: str) -> dict:
     """Send a message to Slack webhook (mock: just logs)."""
     settings = get_settings()

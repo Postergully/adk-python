@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from p2p_agents.tools.helpers import ns_get, ns_post, ns_put, sd_get
+from p2p_agents.tools.helpers import ns_get, ns_post, ns_put, sd_get, resolve_spotdraft_party_id
 
 
 # ── Tool 1 ───────────────────────────────────────────────────────────────────
@@ -76,9 +76,14 @@ def get_vendor_onboarding_status(vendor_id: str = "", vendor_name: str = "") -> 
     # Fetch NetSuite vendor record
     vendor = ns_get(f"/record/v1/vendor/{vendor_id}")
 
+    # Resolve SpotDraft party ID by vendor name
+    vendor_name = vendor.get("companyName", "")
+    party_id = resolve_spotdraft_party_id(vendor_name)
+
     # Fetch Spotdraft onboarding status
     try:
-        onboarding = sd_get(f"/api/custom/onboarding/{vendor_id}/")
+        lookup_id = party_id or vendor_id
+        onboarding = sd_get(f"/api/custom/onboarding/{lookup_id}/")
     except Exception:
         onboarding = {"overall_status": "unknown", "documents_pending": [], "documents_received": []}
 
@@ -213,15 +218,22 @@ def generate_onboarding_report() -> dict:
     report = {"complete": [], "pending": [], "blocked": []}
     for vendor in items:
         vid = vendor.get("id", "")
-        try:
-            onboarding = sd_get(f"/api/custom/onboarding/{vid}/")
-            status = onboarding.get("overall_status", "pending")
-        except Exception:
+        vendor_name = vendor.get("companyName", "")
+        party_id = resolve_spotdraft_party_id(vendor_name)
+
+        if party_id:
+            try:
+                onboarding = sd_get(f"/api/custom/onboarding/{party_id}/")
+                status = onboarding.get("overall_status", "pending")
+            except Exception:
+                status = "pending"
+        else:
             status = "pending"
 
         entry = {
             "vendor_id": vid,
-            "vendor_name": vendor.get("companyName", ""),
+            "vendor_name": vendor_name,
+            "spotdraft_party_id": party_id or "not_linked",
             "status": status,
         }
         if status == "complete":
