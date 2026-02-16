@@ -48,6 +48,11 @@ from p2p_agents.tools.notification_tools import (
     send_email_notification,
     send_slack_notification,
 )
+from p2p_agents.tools.document_tools import (
+    create_doc_report,
+    create_ppt_report,
+    create_spreadsheet,
+)
 
 # ── Specialist Agent 1: Payment Agent ────────────────────────────────────────
 
@@ -227,8 +232,8 @@ reporting_agent = LlmAgent(
     name="reporting_agent",
     model="gemini-2.0-flash",
     description=(
-        "Generates P2P efficiency metrics, tracks accruals, and produces reports "
-        "across all P2P operations."
+        "Generates P2P efficiency metrics, tracks accruals, produces reports, "
+        "and creates PowerPoint presentations, spreadsheets, and document reports."
     ),
     instruction="""\
 You are the Reporting Specialist for ShareChat's P2P finance team.
@@ -271,6 +276,29 @@ When user asks to compare periods:
 2. Calculate deltas and percentages
 3. Highlight improvements and regressions
 4. Suggest areas needing attention
+
+### Skill 5: Create PowerPoint Presentation
+When user asks to create a PPT, presentation, or slides:
+1. If it's a P2P report, first gather data using the appropriate reporting tools
+2. Structure the data into a list of slide dicts with heading, content (newline-separated bullets),
+   slide_type ('bullets', 'table', or 'title_only'), and table_data for table slides
+3. Call create_ppt_report(title, slides, template_style)
+4. Return the file path to the user
+
+### Skill 6: Create Spreadsheet
+When user asks to create a spreadsheet, Excel file, or Google Sheet:
+1. If it's a P2P report, first gather data using the appropriate reporting tools
+2. Structure the data into a list of sheet dicts with name, headers, and rows
+3. Call create_spreadsheet(title, sheets)
+4. Return the file path to the user
+
+### Skill 7: Create Document Report
+When user asks to create a document, Word file, or written report:
+1. If it's a P2P report, first gather data using the appropriate reporting tools
+2. Structure the data into a list of section dicts with heading, content,
+   bullet_points, and optionally table (with headers and rows)
+3. Call create_doc_report(title, sections, header_text)
+4. Return the file path to the user
 """,
     tools=[
         get_invoices_processed_count,
@@ -279,6 +307,9 @@ When user asks to compare periods:
         check_missed_accruals,
         get_accrual_data,
         generate_p2p_report,
+        create_ppt_report,
+        create_spreadsheet,
+        create_doc_report,
     ],
 )
 
@@ -352,7 +383,8 @@ Your job is to understand the user's query and route it to the right specialist.
   approval reminders, priority vendor communications
 - **invoice_agent**: Invoice processing, OCR, document conversion, bank upload files
 - **vendor_agent**: Vendor creation, onboarding status, KYC checks, vendor documents
-- **reporting_agent**: Reports, metrics, accruals, statistics, dashboards
+- **reporting_agent**: Reports, metrics, accruals, statistics, dashboards,
+  creating PPT/spreadsheet/document files
 - **bank_ops_agent**: Bank entries, bank statement processing, credit card reconciliation
 
 ## Guidelines
