@@ -1,0 +1,810 @@
+{
+  "vendors": [
+    {
+      "id": "1",
+      "companyName": "Google LLC",
+      "isPerson": false,
+      "email": "ap@google.com",
+      "phone": "+1-650-253-0000",
+      "taxIdNum": "AABCG1234E",
+      "gstIdNum": "29AABCG1234E1ZF",
+      "accountNumber": "12345678901234",
+      "terms": {"id": "5", "refName": "Net 30"},
+      "category": {"id": "2", "refName": "Technology"},
+      "subsidiary": {"id": "1"},
+      "dateCreated": "2023-06-15T10:00:00Z"
+    },
+    {
+      "id": "2",
+      "companyName": "Agora Inc",
+      "isPerson": false,
+      "email": "billing@agora.io",
+      "phone": "+1-408-879-5885",
+      "taxIdNum": "AABCA5678F",
+      "gstIdNum": "27AABCA5678F1ZH",
+      "accountNumber": "98765432109876",
+      "terms": {"id": "6", "refName": "Net 60"},
+      "category": {"id": "2", "refName": "Technology"},
+      "subsidiary": {"id": "1"},
+      "dateCreated": "2023-07-01T10:00:00Z"
+    },
+    {
+      "id": "3",
+      "companyName": "Tencent Cloud",
+      "isPerson": false,
+      "email": "finance@tencent.com",
+      "phone": "+86-755-8601-3388",
+      "taxIdNum": "AABCT9012G",
+      "gstIdNum": "29AABCT9012G1ZK",
+      "accountNumber": "55667788990011",
+      "terms": {"id": "5", "refName": "Net 30"},
+      "category": {"id": "2", "refName": "Technology"},
+      "subsidiary": {"id": "1"},
+      "dateCreated": "2023-08-10T10:00:00Z"
+    },
+    {
+      "id": "4",
+      "companyName": "Amazon Web Services",
+      "isPerson": false,
+      "email": "aws-billing@amazon.com",
+      "phone": "+1-206-266-1000",
+      "taxIdNum": "AABCA3456H",
+      "gstIdNum": "29AABCA3456H1ZM",
+      "accountNumber": "11223344556677",
+      "terms": {"id": "5", "refName": "Net 30"},
+      "category": {"id": "2", "refName": "Technology"},
+      "subsidiary": {"id": "1"},
+      "dateCreated": "2023-05-01T10:00:00Z"
+    },
+    {
+      "id": "5",
+      "companyName": "Freshworks Inc",
+      "isPerson": false,
+      "email": "accounts@freshworks.com",
+      "phone": "+91-44-6667-8000",
+      "taxIdNum": "AABCF7890J",
+      "gstIdNum": "33AABCF7890J1ZP",
+      "accountNumber": "22334455667788",
+      "terms": {"id": "5", "refName": "Net 30"},
+      "category": {"id": "3", "refName": "SaaS"},
+      "subsidiary": {"id": "1"},
+      "dateCreated": "2023-09-15T10:00:00Z"
+    },
+    {
+      "id": "6",
+      "companyName": "WeWork India",
+      "isPerson": false,
+      "email": "billing@wework.co.in",
+      "phone": "+91-80-4567-8900",
+      "taxIdNum": "AABCW2345K",
+      "gstIdNum": "29AABCW2345K1ZR",
+      "accountNumber": "33445566778899",
+      "terms": {"id": "5", "refName": "Net 30"},
+      "category": {"id": "4", "refName": "Facilities"},
+      "subsidiary": {"id": "1"},
+      "dateCreated": "2023-04-01T10:00:00Z"
+    },
+    {
+      "id": "7",
+      "companyName": "Razorpay Software",
+      "isPerson": false,
+      "email": "finance@razorpay.com",
+      "phone": "+91-80-4678-9012",
+      "taxIdNum": "AABCR6789L",
+      "gstIdNum": "29AABCR6789L1ZT",
+      "accountNumber": "44556677889900",
+      "terms": {"id": "5", "refName": "Net 30"},
+      "category": {"id": "5", "refName": "Fintech"},
+      "subsidiary": {"id": "1"},
+      "dateCreated": "2023-10-01T10:00:00Z"
+    },
+    {
+      "id": "8",
+      "companyName": "Cloudflare Inc",
+      "isPerson": false,
+      "email": "billing@cloudflare.com",
+      "phone": "+1-650-319-8930",
+      "taxIdNum": "AABCC1234M",
+      "gstIdNum": null,
+      "accountNumber": "55667788001122",
+      "terms": {"id": "5", "refName": "Net 30"},
+      "category": {"id": "2", "refName": "Technology"},
+      "subsidiary": {"id": "1"},
+      "dateCreated": "2024-01-10T10:00:00Z"
+    },
+    {
+      "id": "9",
+      "companyName": "Zeta Suite Technologies",
+      "isPerson": false,
+      "email": "ap@zetasuite.in",
+      "phone": "+91-22-4567-1234",
+      "taxIdNum": "AABCZ5678N",
+      "gstIdNum": "27AABCZ5678N1ZV",
+      "accountNumber": "66778899001133",
+      "terms": {"id": "6", "refName": "Net 60"},
+      "category": {"id": "3", "refName": "SaaS"},
+      "subsidiary": {"id": "1"},
+      "dateCreated": "2024-02-01T10:00:00Z"
+    },
+    {
+      "id": "10",
+      "companyName": "Keka HR Pvt Ltd",
+      "isPerson": false,
+      "email": "billing@keka.com",
+      "phone": "+91-40-4567-5678",
+      "taxIdNum": "AABCK9012P",
+      "gstIdNum": "36AABCK9012P1ZX",
+      "accountNumber": "77889900112244",
+      "terms": {"id": "5", "refName": "Net 30"},
+      "category": {"id": "6", "refName": "HR Tech"},
+      "subsidiary": {"id": "1"},
+      "dateCreated": "2024-03-01T10:00:00Z"
+    },
+    {
+      "id": "11",
+      "companyName": "Twilio Inc",
+      "isPerson": false,
+      "email": "billing@twilio.com",
+      "phone": "+1-415-390-2337",
+      "taxIdNum": "AABCT3456Q",
+      "gstIdNum": null,
+      "accountNumber": "88990011223355",
+      "terms": {"id": "5", "refName": "Net 30"},
+      "category": {"id": "2", "refName": "Technology"},
+      "subsidiary": {"id": "1"},
+      "dateCreated": "2023-11-01T10:00:00Z"
+    },
+    {
+      "id": "12",
+      "companyName": "MakeMyTrip Business",
+      "isPerson": false,
+      "email": "corporate@makemytrip.com",
+      "phone": "+91-124-462-8747",
+      "taxIdNum": "AABCM7890R",
+      "gstIdNum": "06AABCM7890R1ZA",
+      "accountNumber": "99001122334466",
+      "terms": {"id": "5", "refName": "Net 30"},
+      "category": {"id": "7", "refName": "Travel"},
+      "subsidiary": {"id": "1"},
+      "dateCreated": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "100",
+      "companyName": "Nexora Digital",
+      "isPerson": false,
+      "email": "finance@nexora.in",
+      "phone": "+91-80-3456-7890",
+      "taxIdNum": "AABCN1234S",
+      "gstIdNum": "29AABCN1234S1ZC",
+      "accountNumber": "10203040506070",
+      "terms": {"id": "5", "refName": "Net 30"},
+      "category": {"id": "8", "refName": "Marketing"},
+      "subsidiary": {"id": "1"},
+      "dateCreated": "2024-04-01T10:00:00Z"
+    },
+    {
+      "id": "101",
+      "companyName": "Priya Mehta Consulting",
+      "isPerson": true,
+      "email": "priya@mehtaconsulting.com",
+      "phone": "+91-98765-43210",
+      "taxIdNum": "BMPPM1234T",
+      "gstIdNum": null,
+      "accountNumber": "20304050607080",
+      "terms": {"id": "5", "refName": "Net 30"},
+      "category": {"id": "9", "refName": "Consulting"},
+      "subsidiary": {"id": "1"},
+      "dateCreated": "2024-05-01T10:00:00Z"
+    },
+    {
+      "id": "102",
+      "companyName": "Dharma Legal Associates",
+      "isPerson": false,
+      "email": "billing@dharmalegal.in",
+      "phone": "+91-22-2345-6789",
+      "taxIdNum": "AABCD5678U",
+      "gstIdNum": "27AABCD5678U1ZE",
+      "accountNumber": "30405060708090",
+      "terms": {"id": "7", "refName": "Net 90"},
+      "category": {"id": "10", "refName": "Legal"},
+      "subsidiary": {"id": "1"},
+      "dateCreated": "2024-06-01T10:00:00Z"
+    }
+  ],
+  "vendorBills": [
+    {
+      "id": "1001",
+      "entity": {"id": "1", "refName": "Google LLC"},
+      "tranId": "INV-2024-001",
+      "tranDate": "2024-01-15",
+      "dueDate": "2024-02-14",
+      "amount": 1250000.00,
+      "currency": {"id": "1", "refName": "INR"},
+      "approvalStatus": "approved",
+      "status": "paid",
+      "memo": "GCP Services - Jan 2024",
+      "item": [
+        {"item": {"id": "10"}, "description": "GCP Compute - Jan 2024", "amount": 800000.00, "account": {"id": "500"}},
+        {"item": {"id": "11"}, "description": "GCP Storage - Jan 2024", "amount": 450000.00, "account": {"id": "500"}}
+      ]
+    },
+    {
+      "id": "1002",
+      "entity": {"id": "1", "refName": "Google LLC"},
+      "tranId": "INV-2024-002",
+      "tranDate": "2024-02-15",
+      "dueDate": "2024-03-16",
+      "amount": 1320000.00,
+      "currency": {"id": "1", "refName": "INR"},
+      "approvalStatus": "approved",
+      "status": "paid",
+      "memo": "GCP Services - Feb 2024",
+      "item": [
+        {"item": {"id": "10"}, "description": "GCP Compute - Feb 2024", "amount": 870000.00, "account": {"id": "500"}},
+        {"item": {"id": "11"}, "description": "GCP Storage - Feb 2024", "amount": 450000.00, "account": {"id": "500"}}
+      ]
+    },
+    {
+      "id": "1003",
+      "entity": {"id": "2", "refName": "Agora Inc"},
+      "tranId": "INV-2024-003",
+      "tranDate": "2024-01-20",
+      "dueDate": "2024-03-20",
+      "amount": 890000.00,
+      "currency": {"id": "1", "refName": "INR"},
+      "approvalStatus": "approved",
+      "status": "paid",
+      "memo": "Video SDK License - Q1 2024",
+      "item": [
+        {"item": {"id": "20"}, "description": "Agora Video SDK - Q1 2024", "amount": 890000.00, "account": {"id": "501"}}
+      ]
+    },
+    {
+      "id": "1004",
+      "entity": {"id": "3", "refName": "Tencent Cloud"},
+      "tranId": "INV-2024-004",
+      "tranDate": "2024-02-01",
+      "dueDate": "2024-03-02",
+      "amount": 675000.00,
+      "currency": {"id": "1", "refName": "INR"},
+      "approvalStatus": "pendingApproval",
+      "status": "open",
+      "memo": "Cloud Infra - Feb 2024",
+      "item": [
+        {"item": {"id": "30"}, "description": "Tencent CDN Services", "amount": 375000.00, "account": {"id": "502"}},
+        {"item": {"id": "31"}, "description": "Tencent Object Storage", "amount": 300000.00, "account": {"id": "502"}}
+      ]
+    },
+    {
+      "id": "1005",
+      "entity": {"id": "4", "refName": "Amazon Web Services"},
+      "tranId": "INV-2024-005",
+      "tranDate": "2024-01-31",
+      "dueDate": "2024-03-01",
+      "amount": 2100000.00,
+      "currency": {"id": "1", "refName": "INR"},
+      "approvalStatus": "approved",
+      "status": "overdue",
+      "memo": "AWS Services - Jan 2024",
+      "item": [
+        {"item": {"id": "40"}, "description": "EC2 + EKS", "amount": 1400000.00, "account": {"id": "500"}},
+        {"item": {"id": "41"}, "description": "S3 + CloudFront", "amount": 700000.00, "account": {"id": "500"}}
+      ]
+    },
+    {
+      "id": "1006",
+      "entity": {"id": "5", "refName": "Freshworks Inc"},
+      "tranId": "INV-2024-006",
+      "tranDate": "2024-02-10",
+      "dueDate": "2024-03-11",
+      "amount": 180000.00,
+      "currency": {"id": "1", "refName": "INR"},
+      "approvalStatus": "pendingApproval",
+      "status": "open",
+      "memo": "Freshdesk Enterprise - Feb 2024",
+      "item": [
+        {"item": {"id": "50"}, "description": "Freshdesk License - 100 seats", "amount": 180000.00, "account": {"id": "503"}}
+      ]
+    },
+    {
+      "id": "1007",
+      "entity": {"id": "6", "refName": "WeWork India"},
+      "tranId": "INV-2024-007",
+      "tranDate": "2024-02-01",
+      "dueDate": "2024-03-02",
+      "amount": 450000.00,
+      "currency": {"id": "1", "refName": "INR"},
+      "approvalStatus": "approved",
+      "status": "paid",
+      "memo": "Office Space - Feb 2024 - BLR",
+      "item": [
+        {"item": {"id": "60"}, "description": "WeWork Bangalore - 50 desks", "amount": 450000.00, "account": {"id": "504"}}
+      ]
+    },
+    {
+      "id": "1008",
+      "entity": {"id": "1", "refName": "Google LLC"},
+      "tranId": "INV-2024-008",
+      "tranDate": "2024-03-15",
+      "dueDate": "2024-04-14",
+      "amount": 1380000.00,
+      "currency": {"id": "1", "refName": "INR"},
+      "approvalStatus": "pendingApproval",
+      "status": "open",
+      "memo": "GCP Services - Mar 2024",
+      "item": [
+        {"item": {"id": "10"}, "description": "GCP Compute - Mar 2024", "amount": 920000.00, "account": {"id": "500"}},
+        {"item": {"id": "11"}, "description": "GCP Storage - Mar 2024", "amount": 460000.00, "account": {"id": "500"}}
+      ]
+    },
+    {
+      "id": "1009",
+      "entity": {"id": "7", "refName": "Razorpay Software"},
+      "tranId": "INV-2024-009",
+      "tranDate": "2024-02-20",
+      "dueDate": "2024-03-21",
+      "amount": 95000.00,
+      "currency": {"id": "1", "refName": "INR"},
+      "approvalStatus": "approved",
+      "status": "overdue",
+      "memo": "Payment Gateway - Feb 2024",
+      "item": [
+        {"item": {"id": "70"}, "description": "Razorpay Transaction Fees", "amount": 95000.00, "account": {"id": "505"}}
+      ]
+    },
+    {
+      "id": "1010",
+      "entity": {"id": "8", "refName": "Cloudflare Inc"},
+      "tranId": "INV-2024-010",
+      "tranDate": "2024-03-01",
+      "dueDate": "2024-03-31",
+      "amount": 220000.00,
+      "currency": {"id": "1", "refName": "INR"},
+      "approvalStatus": "approved",
+      "status": "overdue",
+      "memo": "CDN + Security - Mar 2024",
+      "item": [
+        {"item": {"id": "80"}, "description": "Cloudflare Enterprise Plan", "amount": 220000.00, "account": {"id": "502"}}
+      ]
+    },
+    {
+      "id": "1011",
+      "entity": {"id": "11", "refName": "Twilio Inc"},
+      "tranId": "INV-2024-011",
+      "tranDate": "2024-02-28",
+      "dueDate": "2024-03-29",
+      "amount": 340000.00,
+      "currency": {"id": "1", "refName": "INR"},
+      "approvalStatus": "approved",
+      "status": "overdue",
+      "memo": "SMS + Voice API - Feb 2024",
+      "item": [
+        {"item": {"id": "110"}, "description": "Twilio SMS API Usage", "amount": 240000.00, "account": {"id": "506"}},
+        {"item": {"id": "111"}, "description": "Twilio Voice API Usage", "amount": 100000.00, "account": {"id": "506"}}
+      ]
+    },
+    {
+      "id": "1012",
+      "entity": {"id": "10", "refName": "Keka HR Pvt Ltd"},
+      "tranId": "INV-2024-012",
+      "tranDate": "2024-03-05",
+      "dueDate": "2024-04-04",
+      "amount": 125000.00,
+      "currency": {"id": "1", "refName": "INR"},
+      "approvalStatus": "pendingApproval",
+      "status": "open",
+      "memo": "HRMS Platform - Mar 2024",
+      "item": [
+        {"item": {"id": "100"}, "description": "Keka HR Platform - 500 employees", "amount": 125000.00, "account": {"id": "507"}}
+      ]
+    },
+    {
+      "id": "1013",
+      "entity": {"id": "100", "refName": "Nexora Digital"},
+      "tranId": "INV-2024-013",
+      "tranDate": "2024-03-10",
+      "dueDate": "2024-04-09",
+      "amount": 560000.00,
+      "currency": {"id": "1", "refName": "INR"},
+      "approvalStatus": "pendingApproval",
+      "status": "open",
+      "memo": "Digital Marketing Campaign - Mar 2024",
+      "item": [
+        {"item": {"id": "200"}, "description": "Social Media Campaign", "amount": 360000.00, "account": {"id": "508"}},
+        {"item": {"id": "201"}, "description": "SEO Services", "amount": 200000.00, "account": {"id": "508"}}
+      ]
+    },
+    {
+      "id": "1014",
+      "entity": {"id": "4", "refName": "Amazon Web Services"},
+      "tranId": "INV-2024-014",
+      "tranDate": "2024-02-28",
+      "dueDate": "2024-03-29",
+      "amount": 2250000.00,
+      "currency": {"id": "1", "refName": "INR"},
+      "approvalStatus": "approved",
+      "status": "overdue",
+      "memo": "AWS Services - Feb 2024",
+      "item": [
+        {"item": {"id": "40"}, "description": "EC2 + EKS", "amount": 1500000.00, "account": {"id": "500"}},
+        {"item": {"id": "41"}, "description": "S3 + CloudFront", "amount": 750000.00, "account": {"id": "500"}}
+      ]
+    }
+  ],
+  "vendorPayments": [
+    {
+      "id": "2001",
+      "entity": {"id": "1", "refName": "Google LLC"},
+      "tranDate": "2024-02-10",
+      "account": {"id": "100", "refName": "HDFC Current Account"},
+      "amount": 1250000.00,
+      "status": "completed",
+      "memo": "Payment for INV-2024-001",
+      "apply": [{"doc": {"id": "1001"}, "amount": 1250000.00}]
+    },
+    {
+      "id": "2002",
+      "entity": {"id": "1", "refName": "Google LLC"},
+      "tranDate": "2024-03-12",
+      "account": {"id": "100", "refName": "HDFC Current Account"},
+      "amount": 1320000.00,
+      "status": "completed",
+      "memo": "Payment for INV-2024-002",
+      "apply": [{"doc": {"id": "1002"}, "amount": 1320000.00}]
+    },
+    {
+      "id": "2003",
+      "entity": {"id": "2", "refName": "Agora Inc"},
+      "tranDate": "2024-03-18",
+      "account": {"id": "101", "refName": "ICICI USD Account"},
+      "amount": 890000.00,
+      "status": "completed",
+      "memo": "Payment for INV-2024-003",
+      "apply": [{"doc": {"id": "1003"}, "amount": 890000.00}]
+    },
+    {
+      "id": "2004",
+      "entity": {"id": "6", "refName": "WeWork India"},
+      "tranDate": "2024-02-28",
+      "account": {"id": "100", "refName": "HDFC Current Account"},
+      "amount": 450000.00,
+      "status": "completed",
+      "memo": "Payment for INV-2024-007",
+      "apply": [{"doc": {"id": "1007"}, "amount": 450000.00}]
+    },
+    {
+      "id": "2005",
+      "entity": {"id": "4", "refName": "Amazon Web Services"},
+      "tranDate": "2024-03-15",
+      "account": {"id": "100", "refName": "HDFC Current Account"},
+      "amount": 2100000.00,
+      "status": "pendingApproval",
+      "approver": {"id": "5", "refName": "VP Finance"},
+      "memo": "Payment for INV-2024-005 (overdue)",
+      "apply": [{"doc": {"id": "1005"}, "amount": 2100000.00}]
+    },
+    {
+      "id": "2006",
+      "entity": {"id": "3", "refName": "Tencent Cloud"},
+      "tranDate": "2024-03-20",
+      "account": {"id": "101", "refName": "ICICI USD Account"},
+      "amount": 675000.00,
+      "status": "pendingApproval",
+      "approver": {"id": "3", "refName": "Finance Manager"},
+      "memo": "Payment for INV-2024-004",
+      "apply": [{"doc": {"id": "1004"}, "amount": 675000.00}]
+    },
+    {
+      "id": "2007",
+      "entity": {"id": "7", "refName": "Razorpay Software"},
+      "tranDate": "2024-03-25",
+      "account": {"id": "100", "refName": "HDFC Current Account"},
+      "amount": 95000.00,
+      "status": "scheduled",
+      "memo": "Payment for INV-2024-009 (overdue)",
+      "apply": [{"doc": {"id": "1009"}, "amount": 95000.00}]
+    }
+  ],
+  "expenses": [
+    {
+      "id": "3001",
+      "employee": {"id": "789", "refName": "Rahul Sharma"},
+      "tranDate": "2024-01-10",
+      "amount": 4500.00,
+      "memo": "Travel expense - Mumbai client visit",
+      "category": {"id": "3", "refName": "Travel"},
+      "approvalStatus": "approved",
+      "expenseList": [
+        {"category": {"id": "3"}, "amount": 2500.00, "memo": "Flight BLR-BOM"},
+        {"category": {"id": "4"}, "amount": 1200.00, "memo": "Hotel - 1 night"},
+        {"category": {"id": "5"}, "amount": 800.00, "memo": "Cab + meals"}
+      ]
+    },
+    {
+      "id": "3002",
+      "employee": {"id": "790", "refName": "Sneha Patel"},
+      "tranDate": "2024-02-05",
+      "amount": 12000.00,
+      "memo": "Conference registration - TechSummit 2024",
+      "category": {"id": "6", "refName": "Training"},
+      "approvalStatus": "pendingApproval",
+      "expenseList": [
+        {"category": {"id": "6"}, "amount": 8000.00, "memo": "TechSummit ticket"},
+        {"category": {"id": "3"}, "amount": 4000.00, "memo": "Travel to Delhi"}
+      ]
+    },
+    {
+      "id": "3003",
+      "employee": {"id": "791", "refName": "Amit Kumar"},
+      "tranDate": "2024-02-15",
+      "amount": 3200.00,
+      "memo": "Client dinner - Agora team visit",
+      "category": {"id": "7", "refName": "Entertainment"},
+      "approvalStatus": "pendingApproval",
+      "expenseList": [
+        {"category": {"id": "7"}, "amount": 3200.00, "memo": "Dinner at ITC Gardenia"}
+      ]
+    },
+    {
+      "id": "3004",
+      "employee": {"id": "792", "refName": "Divya Nair"},
+      "tranDate": "2024-03-01",
+      "amount": 28000.00,
+      "memo": "Equipment purchase - WFH setup",
+      "category": {"id": "8", "refName": "Equipment"},
+      "approvalStatus": "pendingApproval",
+      "expenseList": [
+        {"category": {"id": "8"}, "amount": 18000.00, "memo": "Monitor - Dell 27\""},
+        {"category": {"id": "8"}, "amount": 10000.00, "memo": "Ergonomic chair"}
+      ]
+    },
+    {
+      "id": "3005",
+      "employee": {"id": "789", "refName": "Rahul Sharma"},
+      "tranDate": "2024-03-08",
+      "amount": 1500.00,
+      "memo": "Cab expense - office commute",
+      "category": {"id": "3", "refName": "Travel"},
+      "approvalStatus": "approved",
+      "expenseList": [
+        {"category": {"id": "3"}, "amount": 1500.00, "memo": "Uber rides - March"}
+      ]
+    },
+    {
+      "id": "3006",
+      "employee": {"id": "793", "refName": "Vikram Desai"},
+      "tranDate": "2024-03-12",
+      "amount": 45000.00,
+      "memo": "International travel - Singapore partner meeting",
+      "category": {"id": "3", "refName": "Travel"},
+      "approvalStatus": "pendingApproval",
+      "expenseList": [
+        {"category": {"id": "3"}, "amount": 25000.00, "memo": "Flight BLR-SIN return"},
+        {"category": {"id": "4"}, "amount": 15000.00, "memo": "Hotel - 2 nights"},
+        {"category": {"id": "5"}, "amount": 5000.00, "memo": "Local transport + meals"}
+      ]
+    }
+  ],
+  "bankEntries": [
+    {
+      "id": "4001",
+      "tranDate": "2024-02-10",
+      "amount": 1250000.00,
+      "type": "debit",
+      "description": "NEFT to Google LLC - INV-2024-001",
+      "account": {"id": "100"},
+      "matched": true,
+      "matchedTo": "2001"
+    },
+    {
+      "id": "4002",
+      "tranDate": "2024-03-12",
+      "amount": 1320000.00,
+      "type": "debit",
+      "description": "NEFT to Google LLC - INV-2024-002",
+      "account": {"id": "100"},
+      "matched": true,
+      "matchedTo": "2002"
+    },
+    {
+      "id": "4003",
+      "tranDate": "2024-03-18",
+      "amount": 890000.00,
+      "type": "debit",
+      "description": "SWIFT to Agora Inc - INV-2024-003",
+      "account": {"id": "101"},
+      "matched": true,
+      "matchedTo": "2003"
+    },
+    {
+      "id": "4004",
+      "tranDate": "2024-02-28",
+      "amount": 450000.00,
+      "type": "debit",
+      "description": "NEFT to WeWork India - Feb rent",
+      "account": {"id": "100"},
+      "matched": true,
+      "matchedTo": "2004"
+    },
+    {
+      "id": "4005",
+      "tranDate": "2024-03-15",
+      "amount": 75000.00,
+      "type": "debit",
+      "description": "NEFT - Unknown beneficiary",
+      "account": {"id": "100"},
+      "matched": false,
+      "matchedTo": null
+    },
+    {
+      "id": "4006",
+      "tranDate": "2024-03-20",
+      "amount": 120000.00,
+      "type": "debit",
+      "description": "RTGS - Tech vendor payment",
+      "account": {"id": "100"},
+      "matched": false,
+      "matchedTo": null
+    },
+    {
+      "id": "4007",
+      "tranDate": "2024-03-22",
+      "amount": 55000.00,
+      "type": "debit",
+      "description": "NEFT - Office supplies",
+      "account": {"id": "100"},
+      "matched": false,
+      "matchedTo": null
+    },
+    {
+      "id": "4008",
+      "tranDate": "2024-03-25",
+      "amount": 5000000.00,
+      "type": "credit",
+      "description": "FD maturity credit",
+      "account": {"id": "100"},
+      "matched": false,
+      "matchedTo": null
+    }
+  ],
+  "ccInvoices": [
+    {
+      "id": "5001",
+      "tranDate": "2024-02-05",
+      "amount": 12500.00,
+      "vendor": "Amazon.in",
+      "cardLast4": "4532",
+      "category": "Office Supplies",
+      "matched": false,
+      "matchedTo": null
+    },
+    {
+      "id": "5002",
+      "tranDate": "2024-02-10",
+      "amount": 45000.00,
+      "vendor": "Zoom Video",
+      "cardLast4": "4532",
+      "category": "Software",
+      "matched": false,
+      "matchedTo": null
+    },
+    {
+      "id": "5003",
+      "tranDate": "2024-02-15",
+      "amount": 8900.00,
+      "vendor": "Swiggy Corporate",
+      "cardLast4": "7821",
+      "category": "Meals",
+      "matched": false,
+      "matchedTo": null
+    },
+    {
+      "id": "5004",
+      "tranDate": "2024-03-01",
+      "amount": 32000.00,
+      "vendor": "GitHub Enterprise",
+      "cardLast4": "4532",
+      "category": "Software",
+      "matched": true,
+      "matchedTo": "1050"
+    },
+    {
+      "id": "5005",
+      "tranDate": "2024-03-05",
+      "amount": 15600.00,
+      "vendor": "Figma Inc",
+      "cardLast4": "4532",
+      "category": "Software",
+      "matched": false,
+      "matchedTo": null
+    },
+    {
+      "id": "5006",
+      "tranDate": "2024-03-10",
+      "amount": 7800.00,
+      "vendor": "Uber Business",
+      "cardLast4": "7821",
+      "category": "Travel",
+      "matched": false,
+      "matchedTo": null
+    },
+    {
+      "id": "5007",
+      "tranDate": "2024-03-12",
+      "amount": 125000.00,
+      "vendor": "Notion Labs",
+      "cardLast4": "4532",
+      "category": "Software",
+      "matched": false,
+      "matchedTo": null
+    },
+    {
+      "id": "5008",
+      "tranDate": "2024-03-15",
+      "amount": 3500.00,
+      "vendor": "Dunzo Delivery",
+      "cardLast4": "7821",
+      "category": "Office Supplies",
+      "matched": false,
+      "matchedTo": null
+    }
+  ],
+  "accruals": [
+    {
+      "id": "6001",
+      "period": "2024-01",
+      "vendor": {"id": "1", "refName": "Google LLC"},
+      "amount": 1300000.00,
+      "account": {"id": "500"},
+      "status": "posted"
+    },
+    {
+      "id": "6002",
+      "period": "2024-01",
+      "vendor": {"id": "4", "refName": "Amazon Web Services"},
+      "amount": 2000000.00,
+      "account": {"id": "500"},
+      "status": "posted"
+    },
+    {
+      "id": "6003",
+      "period": "2024-02",
+      "vendor": {"id": "1", "refName": "Google LLC"},
+      "amount": 1350000.00,
+      "account": {"id": "500"},
+      "status": "posted"
+    },
+    {
+      "id": "6004",
+      "period": "2024-02",
+      "vendor": {"id": "4", "refName": "Amazon Web Services"},
+      "amount": 2200000.00,
+      "account": {"id": "500"},
+      "status": "pending"
+    },
+    {
+      "id": "6005",
+      "period": "2024-03",
+      "vendor": {"id": "1", "refName": "Google LLC"},
+      "amount": 1400000.00,
+      "account": {"id": "500"},
+      "status": "pending"
+    },
+    {
+      "id": "6006",
+      "period": "2024-03",
+      "vendor": {"id": "2", "refName": "Agora Inc"},
+      "amount": 300000.00,
+      "account": {"id": "501"},
+      "status": "pending"
+    },
+    {
+      "id": "6007",
+      "period": "2024-03",
+      "vendor": {"id": "3", "refName": "Tencent Cloud"},
+      "amount": 700000.00,
+      "account": {"id": "502"},
+      "status": "pending"
+    }
+  ]
+}
