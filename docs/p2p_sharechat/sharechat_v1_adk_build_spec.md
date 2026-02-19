@@ -89,6 +89,8 @@ and production config.
 
 ## Slack APIs (official)
 
+For slack build we can also refer:https://github.com/danishi/slack-bot-adk-python-cloudrun. Test the secutirty before running it.
+
 - Events ingestion:
   - Event type: `app_mention`
   - Transport: Events API via HTTP endpoint or Socket Mode
@@ -312,3 +314,29 @@ From `mock_servers/netsuite_mock`:
 - `docs/p2p_sharechat/Proposal For Sharechat.md` records the first-meeting context for invoice handling.
 - `docs/p2p_sharechat/sharechat_invoice_payment_human_kb.md` outlines how L1/L2 approvers currently resolve invoice payment questions.
 - Use these documents to seed Finny’s instructions and refusal/clarification flows before coding.
+
+## 14) V1 Progress Tracker
+
+### Completed
+- Phase 1: Slack gateway with signature verification, 3s ack, async processing
+- Phase 1: ADK agent package with App pattern (`p2p_agents/finny_v1/`)
+- Phase 1: Both `app_mention` and DM event wiring
+- Phase 2: NetSuite connector with auth abstraction
+- Phase 2: Tools — `get_payment_status`, `get_pending_approvals`, `send_approval_reminder`
+- Phase 3: Happy paths — invoice lookup, vendor lookup, pending approvals
+- Phase 3: Edge paths — out-of-scope rejection, disambiguation
+- Phase 4: Unit tests — gateway, tools, audit, NetSuite client, Slack mock
+- Phase 4: E2E sandbox smoke test with 4 scenarios
+- Infra: Full mock server stack (NetSuite :8081, Slack :8083)
+- Infra: Makefile orchestration (finny-up/down/test/sandbox/adk)
+- Docs: Quickstart guide, build spec
+
+### Bug Fixes
+- Fixed sandbox thread polling: `conversations.history` only returns top-level
+  messages (correct Slack API behavior). Sandbox now also polls
+  `conversations.replies` for threaded agent responses.
+
+### Remaining
+- Phase 4: Failure injection tests (NetSuite timeout, 404, 401)
+- Phase 5: UAT with finance team
+- Phase 5: Runbook and go-live checklist
