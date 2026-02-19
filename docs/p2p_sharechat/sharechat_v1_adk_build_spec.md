@@ -160,6 +160,7 @@ From `mock_servers/netsuite_mock`:
 - `payment_status`
 - `approval_status`
 - `pending_stage`
+- `approver_stage` (derived from NetSuite L1/L2/finance approval data so we can call them out explicitly)
 - `next_action`
 - `confidence` (`high|medium|low`)
 
@@ -171,6 +172,7 @@ From `mock_servers/netsuite_mock`:
 - Validate Slack app creation path and scopes.
 - Validate OAuth 2.0 connectivity and roles.
 - Freeze V1 acceptance criteria and response template.
+- Review the `Proposal For Sharechat` KB and the new invoice human process brief to understand the current manual checks before crafting prompts.
 
 ## Phase 1: Slack and ADK Skeleton (Day 3-5)
 
@@ -304,3 +306,9 @@ From `mock_servers/netsuite_mock`:
   https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/section_1545222128.html
 - NetSuite SuiteQL endpoint:
   https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/section_157909186990.html
+
+## 13) Human Knowledge Base
+
+- `docs/p2p_sharechat/Proposal For Sharechat.md` records the first-meeting context for invoice handling.
+- `docs/p2p_sharechat/sharechat_invoice_payment_human_kb.md` outlines how L1/L2 approvers currently resolve invoice payment questions.
+- Use these documents to seed Finny’s instructions and refusal/clarification flows before coding.

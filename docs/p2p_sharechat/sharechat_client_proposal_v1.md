@@ -90,9 +90,9 @@ Fallback: If this invoice looks incorrect, share vendor name or I can connect a 
 - Add reminder-confirmation workflow.
 - Build error handling and not-found/handoff paths.
 
-## Week 3 (Day 11-15)
+-## Week 3 (Day 11-15)
 
-- Full testing (unit + integration + UAT scenarios).
+- Full testing (unit + integration + User Acceptance Testing (UAT) scenarios).
 - Performance/security hardening.
 - UAT with finance team and bug fixes.
 - Handover, runbook, and go-live checklist.
@@ -113,10 +113,11 @@ Fallback: If this invoice looks incorrect, share vendor name or I can connect a 
   - `channels:read` (or restricted channel strategy)
 - Event subscription request URL access (public HTTPS endpoint).
 
-## NetSuite requirements
+-## NetSuite requirements
 
 - Sandbox account details and account-specific domain.
 - Integration setup enabled for REST APIs.
+- Production credentials (read-only) so Finny can pull current records for real-time answers.
 - OAuth 2.0 secured connection (client ID/secret, redirect URI, authorized role).
 - Role with permissions to read:
   - Vendor
@@ -127,8 +128,14 @@ Fallback: If this invoice looks incorrect, share vendor name or I can connect a 
 ## Business requirements
 
 - Final response template approval.
-- List of approver mappings for L1/L2 reminder use case.
+- List of approver mappings for L1/L2 reminder use case (the approver cascade lives inside NetSuite so the same connectors can retrieve approver assignments).
 - Escalation rules for human handoff.
+
+## 8) Invoice Payment Knowledge Base
+
+- Refer to the “Proposal For Sharechat” brief [docs/p2p_sharechat/Proposal For Sharechat.md](docs/p2p_sharechat/Proposal For Sharechat.md) as the starting knowledge base captured in the first meeting.
+- Capture the manual workflow as detailed in [docs/p2p_sharechat/sharechat_invoice_payment_human_kb.md](docs/p2p_sharechat/sharechat_invoice_payment_human_kb.md) so Finny mirrors what humans do when invoice payment questions arrive.
+- Finny will reuse these human checkpoints (status, pending stage, reminders) so responses match the manual behavior captured in the KB.
 
 ## 7) Commercials (V1)
 
