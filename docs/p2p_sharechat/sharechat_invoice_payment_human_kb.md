@@ -1,6 +1,11 @@
 # Invoice Payment Human Knowledge Base (V1 Reference)
 
-This document captures the manual process that Sharechat's finance team currently follows when answering invoice payment queries so the Finny agent can align with the same guardrails.
+This document captures the manual process that Sharechat's finance team
+currently follows when answering invoice payment queries so the Finny agent can
+align with the same guardrails.
+
+Source discussion notes:
+`docs/p2p_sharechat/Proposal For Sharechat.md`.
 
 ## 1) Trigger (consistent with Proposal For Sharechat)
 

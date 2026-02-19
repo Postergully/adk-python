@@ -9,7 +9,7 @@ We will deliver **V1 first** in 15 working days:
 - Structured response format for finance operations.
 - Optional reminder workflow for pending approvals.
 
-V2 and V3 are included as roadmap scope, not part of V1 delivery.
+V2 and V3 are included as roadmap scope, not part of the V1 release milestone.
 
 ## 2) Scope of Work
 
@@ -41,7 +41,7 @@ V2 and V3 are included as roadmap scope, not part of V1 delivery.
 - Production-ready Slack app integration.
 - NetSuite payment-status connector.
 - Deterministic response template.
-- UAT support and documentation.
+- User Acceptance Testing (UAT) support and documentation.
 
 ### Excluded from V1
 
@@ -90,7 +90,7 @@ Fallback: If this invoice looks incorrect, share vendor name or I can connect a 
 - Add reminder-confirmation workflow.
 - Build error handling and not-found/handoff paths.
 
--## Week 3 (Day 11-15)
+## Week 3 (Day 11-15)
 
 - Full testing (unit + integration + User Acceptance Testing (UAT) scenarios).
 - Performance/security hardening.
@@ -113,11 +113,12 @@ Fallback: If this invoice looks incorrect, share vendor name or I can connect a 
   - `channels:read` (or restricted channel strategy)
 - Event subscription request URL access (public HTTPS endpoint).
 
--## NetSuite requirements
+## NetSuite requirements
 
 - Sandbox account details and account-specific domain.
 - Integration setup enabled for REST APIs.
-- Production credentials (read-only) so Finny can pull current records for real-time answers.
+- Production credentials (read-only) so Finny can pull current records for
+  real-time answers.
 - OAuth 2.0 secured connection (client ID/secret, redirect URI, authorized role).
 - Role with permissions to read:
   - Vendor
@@ -128,21 +129,28 @@ Fallback: If this invoice looks incorrect, share vendor name or I can connect a 
 ## Business requirements
 
 - Final response template approval.
-- List of approver mappings for L1/L2 reminder use case (the approver cascade lives inside NetSuite so the same connectors can retrieve approver assignments).
+- List of approver mappings for L1/L2 reminder use case (the approver cascade
+  lives inside NetSuite so the same connectors can retrieve approver
+  assignments).
 - Escalation rules for human handoff.
 
-## 8) Invoice Payment Knowledge Base
+## 7) Invoice Payment Knowledge Base
 
-- Refer to the “Proposal For Sharechat” brief [docs/p2p_sharechat/Proposal For Sharechat.md](docs/p2p_sharechat/Proposal For Sharechat.md) as the starting knowledge base captured in the first meeting.
-- Capture the manual workflow as detailed in [docs/p2p_sharechat/sharechat_invoice_payment_human_kb.md](docs/p2p_sharechat/sharechat_invoice_payment_human_kb.md) so Finny mirrors what humans do when invoice payment questions arrive.
-- Finny will reuse these human checkpoints (status, pending stage, reminders) so responses match the manual behavior captured in the KB.
+- Refer to the first-meeting source notes in
+  [docs/p2p_sharechat/Proposal For Sharechat.md](docs/p2p_sharechat/Proposal%20For%20Sharechat.md).
+- Use the manual workflow in
+  [docs/p2p_sharechat/sharechat_invoice_payment_human_kb.md](docs/p2p_sharechat/sharechat_invoice_payment_human_kb.md)
+  so Finny mirrors how humans resolve invoice payment queries.
+- Finny responses must align with those human checkpoints: invoice
+  identification, approval stage, payment stage, and escalation behavior.
 
-## 7) Commercials (V1)
+## 8) Commercials
 
 ### Estimated cost
 
-- **Rs 60,000 + applicable taxes** (covers V1 delivery plus the scoped V2 items described above).
-- Includes **three months of free maintenance** (monitoring, incident response, configuration tweaks; no new feature development in that window).
+- **Rs 60,000 + applicable taxes** (covers the currently defined V1 and V2 scope).
+- Includes **three months of free maintenance** (monitoring, incident response,
+  and configuration tweaks; no new feature development in that window).
 
 ### Assumptions included in this estimate
 
@@ -154,10 +162,10 @@ Fallback: If this invoice looks incorrect, share vendor name or I can connect a 
 ### Not included in estimate
 
 - NetSuite production rollout support beyond the agreed hypercare window.
-- Additional features outside V1/V2 scope.
+- Additional features outside the defined V1/V2 scope.
 - New development during the three-month maintenance window.
 
-## 8) Acceptance Criteria for V1 Sign-off
+## 9) Acceptance Criteria for V1 Sign-off
 
 - `@finny` returns payment status for invoice/vendor in agreed format.
 - Not-found and ambiguous queries are handled safely.
@@ -165,18 +173,18 @@ Fallback: If this invoice looks incorrect, share vendor name or I can connect a 
 - UAT test pack executed successfully.
 - Runbook and operational handover completed.
 
-## 9) Next Steps
+## 10) Next Steps
 
 1. Confirm approval of V1 scope and commercials.
-2. Share Slack and NetSuite sandbox credentials/access.
+2. Share Slack credentials plus NetSuite sandbox and production read-only access.
 3. Approve implementation start date.
 4. Nominate business and technical SPOCs for daily validation.
 
-## 10) Open Clarifications
+## 11) Open Clarifications
 
 - Any compliance constraints for storing Slack query metadata?
 
-## 11) API References Used
+## 12) API References Used
 
 - Slack AI apps:
   https://docs.slack.dev/ai/developing-ai-apps
