@@ -22,7 +22,6 @@ logger = logging.getLogger(__name__)
 # --- Singletons ---
 
 _runner: InMemoryRunner | None = None
-_session_service: InMemorySessionService | None = None
 _audit = AuditLogger()
 _rate_limiter = RateLimiter()
 
@@ -32,22 +31,17 @@ _DEDUP_WINDOW = 60.0  # seconds
 
 
 def _get_runner() -> InMemoryRunner:
-  global _runner, _session_service
+  global _runner
   if _runner is None:
-    _session_service = InMemorySessionService()
     _runner = InMemoryRunner(
       agent=root_agent,
       app_name="finny_v1",
-      session_service=_session_service,
     )
   return _runner
 
 
 def _get_session_service() -> InMemorySessionService:
-  if _session_service is None:
-    _get_runner()
-  assert _session_service is not None
-  return _session_service
+  return _get_runner().session_service
 
 
 def is_duplicate(event_id: str) -> bool:

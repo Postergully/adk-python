@@ -1,11 +1,5 @@
-# Proposal For Sharechat (Client Conversation Notes)
+# Meeting Notes
 
-This document is the cleaned and structured record of the first client
-conversation. It is the source context for:
-
-- `docs/p2p_sharechat/sharechat_invoice_payment_human_kb.md`
-- `docs/p2p_sharechat/sharechat_client_proposal_v1.md`
-- `docs/p2p_sharechat/sharechat_v1_adk_build_spec.md`
 
 ## 1) What We Discussed
 
@@ -108,9 +102,3 @@ Not found: verify input or connect to human
 2. NetSuite REST API browser (original meeting reference):
    https://system.netsuite.com/help/helpcenter/en_US/APIs/REST_API_Browser/record/v1/2023.1/index.html
 
-## 8) Connection To Human KB
-
-- This file is the source conversation capture.
-- `docs/p2p_sharechat/sharechat_invoice_payment_human_kb.md` converts these
-  notes into a concrete human-operating workflow (what to do, what not to do,
-  which systems to check).

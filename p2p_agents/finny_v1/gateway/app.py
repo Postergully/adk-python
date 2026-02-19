@@ -8,6 +8,7 @@ Start with:
 
 from __future__ import annotations
 
+import asyncio
 import hashlib
 import hmac
 import logging
@@ -22,7 +23,17 @@ from p2p_agents.finny_v1.gateway.event_handler import (
   is_duplicate,
 )
 
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+
+def _bg_task_done(task: asyncio.Task) -> None:
+  """Log exceptions from background event-processing tasks."""
+  if task.cancelled():
+    return
+  exc = task.exception()
+  if exc:
+    logger.error("Background event task failed: %s", exc, exc_info=exc)
 
 fastapi_app = FastAPI(
   title="Finny V1 — Slack Gateway",
@@ -119,9 +130,8 @@ async def slack_events(request: Request):
   # Only handle app_mention and DM messages
   if event_type == "app_mention":
     # 3-second ack: return immediately, process in background
-    import asyncio
-
-    asyncio.ensure_future(handle_event(event))
+    task = asyncio.ensure_future(handle_event(event))
+    task.add_done_callback(_bg_task_done)
     return {"ok": True}
 
   if event_type == "message" and channel_type == "im":
@@ -129,9 +139,8 @@ async def slack_events(request: Request):
     if event.get("bot_id") or event.get("subtype"):
       return {"ok": True}
 
-    import asyncio
-
-    asyncio.ensure_future(handle_event(event))
+    task = asyncio.ensure_future(handle_event(event))
+    task.add_done_callback(_bg_task_done)
     return {"ok": True}
 
   return {"ok": True}

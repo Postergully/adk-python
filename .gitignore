@@ -116,3 +116,7 @@ CLAUDE.md
 .rooignore
 .bolt/
 .v0/
+
+# Finny V1
+.pids/
+finny_audit.db
