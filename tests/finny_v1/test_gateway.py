@@ -4,10 +4,13 @@ from __future__ import annotations
 
 import hashlib
 import hmac
+import json as json_mod
+import os
 import time
 
 import pytest
 from fastapi.testclient import TestClient
+from httpx import Response
 
 from p2p_agents.finny_v1.gateway.app import _verify_slack_signature, fastapi_app
 from p2p_agents.finny_v1.gateway.event_handler import (
@@ -16,6 +19,28 @@ from p2p_agents.finny_v1.gateway.event_handler import (
     _seen_events,
 )
 from p2p_agents.finny_v1.rate_limiter import RateLimiter
+
+
+def _signed_post(client: TestClient, url: str, json_data: dict) -> Response:
+    """POST with valid Slack signature headers."""
+    body_str = json_mod.dumps(json_data)
+    timestamp = str(int(time.time()))
+    secret = os.environ.get("P2P_SLACK_SIGNING_SECRET", "mock-signing-secret")
+    sig_basestring = f"v0:{timestamp}:{body_str}"
+    signature = "v0=" + hmac.new(
+        secret.encode("utf-8"),
+        sig_basestring.encode("utf-8"),
+        hashlib.sha256,
+    ).hexdigest()
+    return client.post(
+        url,
+        content=body_str,
+        headers={
+            "Content-Type": "application/json",
+            "X-Slack-Request-Timestamp": timestamp,
+            "X-Slack-Signature": signature,
+        },
+    )
 
 
 @pytest.fixture
@@ -100,9 +125,10 @@ class TestUrlVerification:
 
 class TestEventParsing:
     def test_app_mention_returns_200(self, gateway_client):
-        resp = gateway_client.post(
+        resp = _signed_post(
+            gateway_client,
             "/slack/events",
-            json={
+            {
                 "type": "event_callback",
                 "event_id": "Ev001",
                 "event": {
@@ -118,9 +144,10 @@ class TestEventParsing:
         assert resp.json()["ok"] is True
 
     def test_dm_message_returns_200(self, gateway_client):
-        resp = gateway_client.post(
+        resp = _signed_post(
+            gateway_client,
             "/slack/events",
-            json={
+            {
                 "type": "event_callback",
                 "event_id": "Ev002",
                 "event": {
@@ -136,9 +163,10 @@ class TestEventParsing:
         assert resp.status_code == 200
 
     def test_bot_message_skipped(self, gateway_client):
-        resp = gateway_client.post(
+        resp = _signed_post(
+            gateway_client,
             "/slack/events",
-            json={
+            {
                 "type": "event_callback",
                 "event_id": "Ev003",
                 "event": {
@@ -179,11 +207,11 @@ class TestIdempotency:
             },
         }
         # First request
-        resp1 = gateway_client.post("/slack/events", json=payload)
+        resp1 = _signed_post(gateway_client, "/slack/events", payload)
         assert resp1.status_code == 200
 
         # Retry — should still return 200 but skip processing
-        resp2 = gateway_client.post("/slack/events", json=payload)
+        resp2 = _signed_post(gateway_client, "/slack/events", payload)
         assert resp2.status_code == 200
 
 
