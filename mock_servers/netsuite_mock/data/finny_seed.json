@@ -1,0 +1,241 @@
+{
+  "vendors": [
+    {
+      "id": "201",
+      "companyName": "Google LLC",
+      "isPerson": false,
+      "email": "ap@google.com",
+      "phone": "+1-650-253-0000",
+      "taxIdNum": "AABCG1234E",
+      "gstIdNum": "29AABCG1234E1ZF",
+      "accountNumber": "12345678901234",
+      "terms": {"id": "5", "refName": "Net 30"},
+      "category": {"id": "2", "refName": "Technology"},
+      "subsidiary": {"id": "1"},
+      "dateCreated": "2023-06-15T10:00:00Z"
+    },
+    {
+      "id": "202",
+      "companyName": "Tencent Cloud",
+      "isPerson": false,
+      "email": "finance@tencent.com",
+      "phone": "+86-755-8601-3388",
+      "taxIdNum": "AABCT9012G",
+      "gstIdNum": "29AABCT9012G1ZK",
+      "accountNumber": "55667788990011",
+      "terms": {"id": "5", "refName": "Net 30"},
+      "category": {"id": "2", "refName": "Technology"},
+      "subsidiary": {"id": "1"},
+      "dateCreated": "2023-08-10T10:00:00Z"
+    },
+    {
+      "id": "203",
+      "companyName": "AWS India Pvt Ltd",
+      "isPerson": false,
+      "email": "aws-billing-india@amazon.com",
+      "phone": "+91-80-4567-1234",
+      "taxIdNum": "AABCA3456H",
+      "gstIdNum": "29AABCA3456H1ZM",
+      "accountNumber": "11223344556677",
+      "terms": {"id": "5", "refName": "Net 30"},
+      "category": {"id": "2", "refName": "Technology"},
+      "subsidiary": {"id": "1"},
+      "dateCreated": "2023-05-01T10:00:00Z"
+    },
+    {
+      "id": "204",
+      "companyName": "Microsoft Corp",
+      "isPerson": false,
+      "email": "billing@microsoft.com",
+      "phone": "+1-425-882-8080",
+      "taxIdNum": "AABCM5678I",
+      "gstIdNum": null,
+      "accountNumber": "99887766554433",
+      "terms": {"id": "6", "refName": "Net 60"},
+      "category": {"id": "2", "refName": "Technology"},
+      "subsidiary": {"id": "1"},
+      "dateCreated": "2023-09-01T10:00:00Z"
+    },
+    {
+      "id": "205",
+      "companyName": "Acme Services Pvt Ltd",
+      "isPerson": false,
+      "email": "accounts@acmeservices.in",
+      "phone": "+91-22-2345-6789",
+      "taxIdNum": "AABCA9876J",
+      "gstIdNum": "27AABCA9876J1ZD",
+      "accountNumber": "44332211009988",
+      "terms": {"id": "5", "refName": "Net 30"},
+      "category": {"id": "9", "refName": "Consulting"},
+      "subsidiary": {"id": "1"},
+      "dateCreated": "2024-01-15T10:00:00Z"
+    }
+  ],
+  "vendorBills": [
+    {
+      "id": "5001",
+      "entity": {"id": "201", "refName": "Google LLC"},
+      "tranId": "INV-2024-001",
+      "tranDate": "2024-01-15",
+      "dueDate": "2024-02-14",
+      "amount": 1250000.00,
+      "currency": {"id": "1", "refName": "INR"},
+      "approvalStatus": "approved",
+      "status": "paid",
+      "memo": "GCP Services - Jan 2024",
+      "item": [
+        {"item": {"id": "10"}, "description": "GCP Compute", "amount": 800000.00, "account": {"id": "500"}},
+        {"item": {"id": "11"}, "description": "GCP Storage", "amount": 450000.00, "account": {"id": "500"}}
+      ]
+    },
+    {
+      "id": "5002",
+      "entity": {"id": "202", "refName": "Tencent Cloud"},
+      "tranId": "INV-2024-002",
+      "tranDate": "2024-02-01",
+      "dueDate": "2024-03-02",
+      "amount": 675000.00,
+      "currency": {"id": "1", "refName": "INR"},
+      "approvalStatus": "pendingApproval",
+      "status": "open",
+      "memo": "Cloud Infra - Feb 2024 - L1 pending",
+      "item": [
+        {"item": {"id": "30"}, "description": "Tencent CDN Services", "amount": 375000.00, "account": {"id": "502"}},
+        {"item": {"id": "31"}, "description": "Tencent Object Storage", "amount": 300000.00, "account": {"id": "502"}}
+      ]
+    },
+    {
+      "id": "5003",
+      "entity": {"id": "203", "refName": "AWS India Pvt Ltd"},
+      "tranId": "INV-2024-003",
+      "tranDate": "2024-02-15",
+      "dueDate": "2024-03-16",
+      "amount": 2100000.00,
+      "currency": {"id": "1", "refName": "INR"},
+      "approvalStatus": "pendingApproval",
+      "status": "open",
+      "memo": "AWS Services - Feb 2024 - L2 pending",
+      "item": [
+        {"item": {"id": "40"}, "description": "EC2 + EKS", "amount": 1400000.00, "account": {"id": "500"}},
+        {"item": {"id": "41"}, "description": "S3 + CloudFront", "amount": 700000.00, "account": {"id": "500"}}
+      ]
+    },
+    {
+      "id": "5004",
+      "entity": {"id": "204", "refName": "Microsoft Corp"},
+      "tranId": "INV-2024-004",
+      "tranDate": "2024-03-01",
+      "dueDate": "2024-04-30",
+      "amount": 890000.00,
+      "currency": {"id": "1", "refName": "INR"},
+      "approvalStatus": "approved",
+      "status": "scheduled",
+      "memo": "Azure + M365 - Mar 2024",
+      "item": [
+        {"item": {"id": "50"}, "description": "Azure Cloud Services", "amount": 590000.00, "account": {"id": "500"}},
+        {"item": {"id": "51"}, "description": "Microsoft 365 Licenses", "amount": 300000.00, "account": {"id": "503"}}
+      ]
+    },
+    {
+      "id": "5005",
+      "entity": {"id": "201", "refName": "Google LLC"},
+      "tranId": "INV-2024-005",
+      "tranDate": "2024-03-15",
+      "dueDate": "2024-04-14",
+      "amount": 1380000.00,
+      "currency": {"id": "1", "refName": "INR"},
+      "approvalStatus": "approved",
+      "status": "processing",
+      "memo": "GCP Services - Mar 2024",
+      "item": [
+        {"item": {"id": "10"}, "description": "GCP Compute - Mar", "amount": 920000.00, "account": {"id": "500"}},
+        {"item": {"id": "11"}, "description": "GCP Storage - Mar", "amount": 460000.00, "account": {"id": "500"}}
+      ]
+    },
+    {
+      "id": "5006",
+      "entity": {"id": "205", "refName": "Acme Services Pvt Ltd"},
+      "tranId": "INV-2024-006",
+      "tranDate": "2024-03-20",
+      "dueDate": "2024-04-19",
+      "amount": 250000.00,
+      "currency": {"id": "1", "refName": "INR"},
+      "approvalStatus": "pendingApproval",
+      "status": "open",
+      "memo": "Consulting - Mar 2024 - Treasury pending",
+      "item": [
+        {"item": {"id": "60"}, "description": "Strategy Consulting", "amount": 250000.00, "account": {"id": "508"}}
+      ]
+    },
+    {
+      "id": "5007",
+      "entity": {"id": "202", "refName": "Tencent Cloud"},
+      "tranId": "INV-2024-007",
+      "tranDate": "2024-01-10",
+      "dueDate": "2024-02-09",
+      "amount": 550000.00,
+      "currency": {"id": "1", "refName": "INR"},
+      "approvalStatus": "approved",
+      "status": "paid",
+      "memo": "Cloud Infra - Jan 2024",
+      "item": [
+        {"item": {"id": "30"}, "description": "Tencent CDN - Jan", "amount": 550000.00, "account": {"id": "502"}}
+      ]
+    },
+    {
+      "id": "5008",
+      "entity": {"id": "203", "refName": "AWS India Pvt Ltd"},
+      "tranId": "INV-2024-008",
+      "tranDate": "2024-04-01",
+      "dueDate": "2024-04-30",
+      "amount": 0.00,
+      "currency": {"id": "1", "refName": "INR"},
+      "approvalStatus": "draft",
+      "status": "draft",
+      "memo": "Draft - incomplete",
+      "item": []
+    }
+  ],
+  "vendorPayments": [
+    {
+      "id": "6001",
+      "entity": {"id": "201", "refName": "Google LLC"},
+      "tranDate": "2024-02-10",
+      "account": {"id": "100", "refName": "HDFC Current Account"},
+      "amount": 1250000.00,
+      "status": "completed",
+      "memo": "Payment for INV-2024-001",
+      "apply": [{"doc": {"id": "5001"}, "amount": 1250000.00}]
+    },
+    {
+      "id": "6002",
+      "entity": {"id": "202", "refName": "Tencent Cloud"},
+      "tranDate": "2024-02-05",
+      "account": {"id": "101", "refName": "ICICI USD Account"},
+      "amount": 550000.00,
+      "status": "completed",
+      "memo": "Payment for INV-2024-007",
+      "apply": [{"doc": {"id": "5007"}, "amount": 550000.00}]
+    },
+    {
+      "id": "6003",
+      "entity": {"id": "204", "refName": "Microsoft Corp"},
+      "tranDate": "2024-04-25",
+      "account": {"id": "100", "refName": "HDFC Current Account"},
+      "amount": 890000.00,
+      "status": "scheduled",
+      "memo": "Scheduled payment for INV-2024-004",
+      "apply": [{"doc": {"id": "5004"}, "amount": 890000.00}]
+    },
+    {
+      "id": "6004",
+      "entity": {"id": "201", "refName": "Google LLC"},
+      "tranDate": "2024-04-10",
+      "account": {"id": "100", "refName": "HDFC Current Account"},
+      "amount": 1380000.00,
+      "status": "processing",
+      "memo": "Payment for INV-2024-005",
+      "apply": [{"doc": {"id": "5005"}, "amount": 1380000.00}]
+    }
+  ]
+}

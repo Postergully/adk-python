@@ -1,0 +1,16 @@
+{
+  "channels": [
+    {"id": "C001", "name": "billing-support", "is_channel": true, "is_im": false},
+    {"id": "C002", "name": "billing-ops", "is_channel": true, "is_im": false},
+    {"id": "D001", "name": "dm-test-user", "is_channel": false, "is_im": true}
+  ],
+  "users": [
+    {"id": "U001", "name": "test_user_1", "real_name": "Test User", "is_bot": false},
+    {"id": "U002", "name": "finny_bot", "real_name": "Finny", "is_bot": true},
+    {"id": "U003", "name": "billing_lead", "real_name": "Billing Lead", "is_bot": false}
+  ],
+  "messages": [
+    {"channel": "C001", "user": "U001", "text": "What is the status of INV-2024-001?", "ts": "1700000001.000001", "thread_ts": null},
+    {"channel": "C001", "user": "U002", "text": "Looking up INV-2024-001...", "ts": "1700000002.000001", "thread_ts": "1700000001.000001"}
+  ]
+}

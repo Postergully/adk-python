@@ -32,6 +32,14 @@ class P2PSettings(BaseSettings):
   email_smtp_port: int = 587
   email_from: str = "p2p@sharechat.com"
 
+  # Slack integration (Finny V1)
+  slack_bot_token: str = ""
+  slack_signing_secret: str = ""
+  slack_allowed_workspace: str = ""
+  slack_billing_ops_channel: str = "#billing-ops"
+  slack_mock_base_url: str = "http://localhost:8083"
+  finny_audit_db_path: str = "./finny_audit.db"
+
   model_config = SettingsConfigDict(
     env_prefix="P2P_",
     env_file=".env",
